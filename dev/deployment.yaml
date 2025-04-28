@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: ankamraghu27/hiring-app:7
+        image: raghuankam27/hiring-app:12
         ports:
         - containerPort: 250250
