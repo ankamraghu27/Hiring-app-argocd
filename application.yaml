@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp-argo-application
-  namespace: argocd
+  namespace: argocd1   # Corrected from argocd to argocd1
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/RameshDumala1/Hiring-app-argocd.git
+    repoURL: https://github.com/ankamraghu27/Hiring-app-argocd.git
     targetRevision: HEAD
     path: dev
   destination: 
@@ -16,8 +16,7 @@ spec:
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
-
+      - CreateNamespace=true
     automated:
       selfHeal: true
       prune: true
