@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.io/instance: myapp-argo-application
 spec:
-  replicas: 6
+  replicas: 4
   selector:
     matchLabels:
       app: myapp
