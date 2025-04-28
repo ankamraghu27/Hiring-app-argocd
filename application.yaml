@@ -1,22 +1,24 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: myapp-argo-application
-  namespace: argocd1   # Corrected from argocd to argocd1
+  name: myapp
+  namespace: myapp
+  labels:
+    app: myapp
+  annotations:
+    argocd.argoproj.io/instance: myapp-argo-application
 spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/ankamraghu27/Hiring-app-argocd.git
-    targetRevision: HEAD
-    path: dev
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: myapp
-
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      selfHeal: true
-      prune: true
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: ankamraghu27/hiring-app:12   # 👉 correct docker hub image
+        ports:
+        - containerPort: 250250             # 👉 if wrong port, container may crash
