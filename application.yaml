@@ -21,4 +21,4 @@ spec:
       - name: myapp
         image: ankamraghu27/hiring-app:12   # 👉 correct docker hub image
         ports:
-        - containerPort: 250250             # 👉 if wrong port, container may crash
+        - containerPort: 8080            # 👉 if wrong port, container may crash
